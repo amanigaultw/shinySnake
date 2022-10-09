@@ -11,7 +11,7 @@ shinyServer(function(input, output) {
   
   #handle key inputs
   observeEvent(input$keys, {
-    params <- isolate(setmoveDir(params, keyToDir(input$keys)))
+    params <- isolate(handleKeyInputs(params, input$keys))
   })
   
   #update game plot at fixed interval

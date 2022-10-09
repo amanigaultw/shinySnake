@@ -1,5 +1,9 @@
 update <- function(params){
   
+  if(params$autoMode){
+    params <- autoDir(params)
+  }
+  
   params <- die(params)
   
   if(params$alive){

@@ -1,8 +1,7 @@
 library(shiny)
 library(keys)
 
-hotkeys <- c("a", "w", "s", "d", 
-             "left", "up", "down", "right",
+hotkeys <- c("a", "w", "s", "d", "left", "up", "down", "right",
              "m")
 
 
