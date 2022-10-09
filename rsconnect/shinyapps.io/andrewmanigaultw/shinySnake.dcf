@@ -1,0 +1,14 @@
+name: shinySnake
+title: shinySnake
+username:
+account: andrewmanigaultw
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7254745
+bundleId: 6384591
+url: https://andrewmanigaultw.shinyapps.io/shinySnake/
+when: 1665321409.14337
+lastSyncTime: 1665321409.14338
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .gitattributes

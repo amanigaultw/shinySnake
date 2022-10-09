@@ -8,7 +8,7 @@ shinyUI(fluidPage(
   
   #CSS
   tags$head(tags$style("#score{color: black;
-                                 font-size: 20px;
+                                 font-size: 30px;
                                  font-weight: bold;
                                  }")),
   
@@ -16,8 +16,8 @@ shinyUI(fluidPage(
   column(8, align="center",
          textOutput("score"),
          plotOutput("plot1",
-                    width = "600px",
-                    height = "600px")
+                    width = "500px",
+                    height = "500px")
   ),
   
   useKeys(),

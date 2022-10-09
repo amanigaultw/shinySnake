@@ -1,7 +1,6 @@
 library(shiny)
 
 #load helper functions
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 fileSources = paste0("R/", list.files(path = "R/", pattern = "*.R"))
 sapply(fileSources, source, .GlobalEnv)
 
@@ -17,7 +16,7 @@ shinyServer(function(input, output) {
   
   #update game plot
   observe({
-    invalidateLater(500)
+    invalidateLater(200)
     output$plot1 <- renderPlot({
       plotFrame(isolate(update(params)))
     }) 
