@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
   
   #update game plot
   observe({
-    invalidateLater(200)
+    invalidateLater(400)
     output$plot1 <- renderPlot({
       plotFrame(isolate(update(params)))
     }) 
@@ -24,5 +24,8 @@ shinyServer(function(input, output) {
   
   #update score UI
   output$score <- renderText({paste("Score: ", params$score)})
+  
+  #set Instructions text output
+  output$Instructions <- renderText({"Controls: WASD or arrow keys"})
   
 })

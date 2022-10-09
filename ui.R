@@ -17,7 +17,8 @@ shinyUI(fluidPage(
          textOutput("score"),
          plotOutput("plot1",
                     width = "500px",
-                    height = "500px")
+                    height = "500px"),
+         textOutput("Instructions")
   ),
   
   useKeys(),
