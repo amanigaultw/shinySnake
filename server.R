@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
     params <- isolate(setmoveDir(params, keyToDir(input$keys)))
   })
   
-  #update game plot
+  #update game plot at fixed interval
   observe({
     invalidateLater(400)
     output$plot1 <- renderPlot({

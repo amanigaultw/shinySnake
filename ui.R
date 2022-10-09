@@ -21,6 +21,7 @@ shinyUI(fluidPage(
          textOutput("Instructions")
   ),
   
+  #hidden inputs
   useKeys(),
   keysInput("keys", hotkeys)
   
