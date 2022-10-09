@@ -24,3 +24,15 @@ getSpawnPos <- function(params){
   
   return(params)
 }
+
+coordsToIndex <- function(x, y, gridSize){
+  y + x * gridSize + 1
+}
+
+indexToCoords <- function(index, gridSize){
+  x <- floor((index - 1) / gridSize)
+  y <- (index - 1) %% gridSize
+  
+  return(list(x = x,
+              y = y))
+}

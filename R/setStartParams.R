@@ -22,7 +22,7 @@ setStartParams <- function(){
                  score = 0,
                  alive = T,
                  
-                 autoMode = F)
+                 autoMode = T)
   
   params <- do.call("reactiveValues", params)
   
