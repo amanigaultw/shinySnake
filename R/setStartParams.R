@@ -9,18 +9,21 @@ setStartParams <- function(){
   params <- reactiveValues(gridSize = 11,
                            
                            snakePos = snakePos,
-                           snakeSize = 14,
-                           snakeColor = "chartreuse4",
+                           snakeSize = 24,
+                           snakeColor = "chartreuse3",
+                           snakeHeadColor = "chartreuse4",
                            
                            foodPos = foodPos,
                            foodSize = 10,
                            foodColor = "brown",
                            
                            moveDir = "up",
+                           moveDirOld = "up",
                            
                            grow = F, 
                            eaten = F,
                            
+                           score = 0,
                            alive = T)
   
   return(params)

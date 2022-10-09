@@ -1,6 +1,6 @@
 setmoveDir <- function(params, dir){
   
-  opposite <- switch (params$moveDir,
+  opposite <- switch (params$moveDirOld,
                       "left" = "right",
                       "right" = "left",
                       "up" = "down",

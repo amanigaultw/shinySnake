@@ -15,12 +15,15 @@ shinyServer(function(input, output) {
     params <- isolate(setmoveDir(params, keyToDir(input$keys)))
   })
   
-  #update
+  #update game plot
   observe({
-      invalidateLater(250)
-      output$plot1 <- renderPlot({
-        plotFrame(isolate(update(params)))
-      }) 
+    invalidateLater(500)
+    output$plot1 <- renderPlot({
+      plotFrame(isolate(update(params)))
+    }) 
   })
-
+  
+  #update score UI
+  output$score <- renderText({paste("Score: ", params$score)})
+  
 })

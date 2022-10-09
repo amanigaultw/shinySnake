@@ -9,9 +9,11 @@ resetStartParams <- function(params){
   params$snakePos <- snakePos
   params$foodPos <- foodPos
   params$moveDir <- "up"
+  params$moveDirOld = "up"
   params$grow = F
   params$eaten = F
   params$alive = T
+  params$score = 0
   
   params <- getSpawnPos(params)
   

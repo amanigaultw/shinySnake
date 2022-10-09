@@ -13,5 +13,8 @@ move <- function(params){
     params$snakePos <- params$snakePos[-nrow(params$snakePos), ]
   }
   
+  #update moveDirOld
+  params$moveDirOld <- params$moveDir
+  
   return(params)
 }
