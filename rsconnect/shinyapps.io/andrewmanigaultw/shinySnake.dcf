@@ -5,10 +5,10 @@ account: andrewmanigaultw
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7254745
-bundleId: 6384627
+bundleId: 6384640
 url: https://andrewmanigaultw.shinyapps.io/shinySnake/
-when: 1665323057.20734
-lastSyncTime: 1665323057.20736
+when: 1665323329.69882
+lastSyncTime: 1665323329.69885
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: .gitattributes
