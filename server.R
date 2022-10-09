@@ -26,6 +26,8 @@ shinyServer(function(input, output) {
   output$score <- renderText({paste("Score: ", params$score)})
   
   #set Instructions text output
-  output$Instructions <- renderText({"Controls: WASD or arrow keys"})
+  output$Instructions <- renderUI({
+    HTML("Controls: WASD/arrow keys")
+  })
   
 })

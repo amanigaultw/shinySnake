@@ -1,16 +1,19 @@
 library(shiny)
 library(keys)
 
-hotkeys <- c("a", "w", "s", "d", "left", "up", "down", "right")
+hotkeys <- c("a", "w", "s", "d", 
+             "left", "up", "down", "right",
+             "m")
 
 
 shinyUI(fluidPage(
   
+  #key inputs
+  useKeys(),
+  keysInput("keys", hotkeys),
+  
   #CSS
-  tags$head(tags$style("#score{color: black;
-                                 font-size: 30px;
-                                 font-weight: bold;
-                                 }")),
+  tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
   
   #UI elements
   column(8, align="center",
@@ -18,11 +21,7 @@ shinyUI(fluidPage(
          plotOutput("plot1",
                     width = "500px",
                     height = "500px"),
-         textOutput("Instructions")
-  ),
-  
-  #hidden inputs
-  useKeys(),
-  keysInput("keys", hotkeys)
+         htmlOutput("Instructions")
+  )
   
 ))
