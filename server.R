@@ -27,7 +27,11 @@ shinyServer(function(input, output) {
   
   #set Instructions text output
   output$Instructions <- renderUI({
-    HTML("Controls: WASD/arrow keys")
+    if(params$autoMode == F){
+      HTML("Controls: WASD/arrow keys") 
+    }else{
+      HTML("Press M to switch to manual mode")
+    }
   })
   
 })
