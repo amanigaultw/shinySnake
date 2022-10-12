@@ -10,7 +10,6 @@ getFitness <- function(AI){
       i <- i + 1
     }
   }
-  
   return(frames_list[[length(frames_list)]]$score)
 }
 
