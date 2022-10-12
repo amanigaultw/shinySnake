@@ -1,7 +1,7 @@
-update <- function(params){
+update <- function(params, AI){
   
   if(params$autoMode){
-    params <- params$AI(params)
+    params <- AI(params)
   }
   
   params <- die(params)

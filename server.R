@@ -4,11 +4,18 @@ library(shiny)
 fileSources = paste0("R/", list.files(path = "R/", pattern = "*.R"))
 sapply(fileSources, source, .GlobalEnv)
 
+############# PICK YOU AI #############
+
+AI <- snakeAI0 # heuristic-based AI; always move towards the target
+# AI <- snakeAI1 # random AI; move at random
+# MORE TO COME SOON ...
+
+############# PICK YOU AI #############
+
 shinyServer(function(input, output) {
   
   #start
   params <- setStartParams()
-  #params <- setStartParams(snakeAI1)
   
   #handle key inputs
   observeEvent(input$keys, {
@@ -19,8 +26,8 @@ shinyServer(function(input, output) {
   observe({
     invalidateLater(200)
     output$plot1 <- renderPlot({
-      plotFrame(isolate(update(params)))
-    }) 
+      plotFrame(isolate(update(params, AI)))
+    })
   })
   
   #update score UI

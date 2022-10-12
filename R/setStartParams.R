@@ -1,8 +1,4 @@
-setStartParams <- function(AI = NULL){
-  
-  if(is.null(AI)){
-    AI <- snakeAI0
-  }
+setStartParams <- function(){
   
   params <- list(gridSize = 11,
                  
@@ -26,8 +22,7 @@ setStartParams <- function(AI = NULL){
                  score = 0,
                  alive = T,
                  
-                 autoMode = T,
-                 AI = AI)
+                 autoMode = T)
   
   params <- do.call("reactiveValues", params)
   
