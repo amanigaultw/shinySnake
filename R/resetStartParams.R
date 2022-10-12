@@ -9,6 +9,8 @@ resetStartParams <- function(params){
   params$eaten = F
   params$alive = T
   params$score = 0
+  params$gameCount <- params$gameCount + 1
+  params$frame = 0
   
   return(params)
 }

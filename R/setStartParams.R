@@ -1,4 +1,4 @@
-setStartParams <- function(){
+setStartParams <- function(asReactive = TRUE){
   
   params <- list(gridSize = 11,
                  
@@ -19,12 +19,16 @@ setStartParams <- function(){
                  grow = F, 
                  eaten = F,
                  
+                 gameCount = 0,
+                 frame = 0,
                  score = 0,
                  alive = T,
                  
                  autoMode = T)
   
-  params <- do.call("reactiveValues", params)
+  if(asReactive){
+    params <- do.call("reactiveValues", params)
+  }
   
   return(params)
 }
