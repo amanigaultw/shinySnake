@@ -1,7 +1,7 @@
 update <- function(params){
   
   if(params$autoMode){
-    params <- autoDir(params)
+    params <- params$AI(params)
   }
   
   params <- die(params)

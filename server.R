@@ -8,6 +8,7 @@ shinyServer(function(input, output) {
   
   #start
   params <- setStartParams()
+  #params <- setStartParams(snakeAI1)
   
   #handle key inputs
   observeEvent(input$keys, {
