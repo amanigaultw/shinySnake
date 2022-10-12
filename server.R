@@ -4,13 +4,13 @@ library(shiny)
 fileSources = paste0("R/", list.files(path = "R/", pattern = "*.R"))
 sapply(fileSources, source, .GlobalEnv)
 
-############# PICK YOU AI #############
+############# PICK YOUR AI #############
 
 AI <- snakeAI0 # heuristic-based AI; always move towards the target
 # AI <- snakeAI1 # random AI; move at random
 # MORE TO COME SOON ...
 
-############# PICK YOU AI #############
+############# PICK YOUR AI #############
 
 shinyServer(function(input, output) {
   
