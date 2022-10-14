@@ -17,14 +17,7 @@ snakeAI2 <- function(params){
   pred <- predict(nn, input)
   colnames(pred) <- c("down", "left", "right", "up")
   pred <- pred[, colnames(pred) %in% possibleMoves]
-  
   best_move <- names(which(pred == max(pred)))
-  
-  
-  # if(is.null(best_move)){
-  #   params$alive <- F
-  #   return(params)
-  # }
   
   params$moveDir <- best_move
   
