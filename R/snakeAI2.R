@@ -1,0 +1,32 @@
+load("NN/nn1.RData")
+library(neuralnet)
+
+snakeAI2 <- function(params){
+  
+  possibleMoves <- c("left", "up", "down", "right")
+  opposite <- switch(params$moveDirOld,
+                     "left" = "right",
+                     "right" = "left",
+                     "up" = "down",
+                     "down" = "up")
+  possibleMoves <- possibleMoves[!possibleMoves %in% opposite]
+  possibleMoves <- sample(possibleMoves, length(possibleMoves), replace = F)
+  
+  # move using nn prediction
+  input <- matrix(paramsToInputs(params), nrow = 1)
+  pred <- predict(nn, input)
+  colnames(pred) <- c("down", "left", "right", "up")
+  pred <- pred[, colnames(pred) %in% possibleMoves]
+  
+  best_move <- names(which(pred == max(pred)))
+  
+  
+  # if(is.null(best_move)){
+  #   params$alive <- F
+  #   return(params)
+  # }
+  
+  params$moveDir <- best_move
+  
+  return(params)
+}
