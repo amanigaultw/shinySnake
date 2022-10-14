@@ -6,9 +6,9 @@ sapply(fileSources, source, .GlobalEnv)
 
 ############# PICK YOUR AI #############
 
-AI <- snakeAI0 # heuristic-based AI; always move towards the target
+# AI <- snakeAI0 # heuristic-based AI; always move towards the target
 # AI <- snakeAI1 # random AI; move at random
-# AI <- snakeAI2 # neural network AI trained using games played by snakeAI0
+AI <- snakeAI2 # neural network AI trained using games played by snakeAI0
 
 ############# PICK YOUR AI #############
 

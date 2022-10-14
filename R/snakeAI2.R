@@ -1,4 +1,10 @@
-load("NN/nn1.RData")
+#load trained nn models
+load("NN/nnModel.RData")
+
+#pick a model
+nn <- nnModel[[4]]
+
+#
 library(neuralnet)
 
 snakeAI2 <- function(params){
