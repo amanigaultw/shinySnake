@@ -27,10 +27,10 @@ getNN <- function(data, filename){
   print(end - start)
 }
 
-getNN(data_shuffled[2001:3000, ], "nn1")
-getNN(data_shuffled[2001:4000, ], "nn2")
-getNN(data_shuffled[2001:6000, ], "nn3")
-getNN(data_shuffled[2001:10000, ], "nn4")
+getNN(data_shuffled[2001:3000, ], "nn1"); beepr::beep(3)
+getNN(data_shuffled[2001:4000, ], "nn2"); beepr::beep(3)
+getNN(data_shuffled[2001:6000, ], "nn3"); beepr::beep(3)
+getNN(data_shuffled[2001:10000, ], "nn4"); beepr::beep(3)
 
 
 
