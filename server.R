@@ -6,9 +6,10 @@ sapply(fileSources, source, .GlobalEnv)
 
 ############# PICK YOUR AI #############
 
-AI <- snakeAI0 # heuristic-based AI; always move towards the target
+# AI <- snakeAI0 # heuristic-based AI; always move towards the target
 # AI <- snakeAI1 # random AI; move at random
 # AI <- snakeAI2 # neural network AI trained using games played by snakeAI0 (not a very smart AI so far)
+AI <- snakeAI3 # use a path algorithm
 
 ############# PICK YOUR AI #############
 
@@ -24,7 +25,7 @@ shinyServer(function(input, output) {
   
   #update game plot at fixed interval
   observe({
-    invalidateLater(200)
+    invalidateLater(400)
     output$plot1 <- renderPlot({
       plotFrame(isolate(update(params, AI)))
     })

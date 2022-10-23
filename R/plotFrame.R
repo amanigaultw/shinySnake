@@ -1,7 +1,16 @@
 plotFrame <- function(params){
   require(ggplot2)
   
-  ggplot() + 
+  frame <- ggplot()
+  
+  if(!is.null(params$path)){
+    pathPoints <- data.frame(xPos = c(params$snakePos$xPos[1], params$path$xPos),
+                             yPos = c(params$snakePos$yPos[1], params$path$yPos))
+    frame <- frame + 
+      geom_path(aes(pathPoints$xPos, pathPoints$yPos), size = params$pathSize, color = params$pathColor)
+  }
+  
+  frame <- frame + 
     geom_point(aes(params$foodPos$xPos, params$foodPos$yPos), size = params$foodSize, color = params$foodColor) +
     geom_point(aes(params$snakePos$xPos[-1], params$snakePos$yPos[-1]), size = params$snakeSize, color = params$snakeColor) +
     geom_point(aes(params$snakePos$xPos[1], params$snakePos$yPos[1]), size = params$snakeSize, color = params$snakeHeadColor) + 
@@ -14,4 +23,6 @@ plotFrame <- function(params){
           axis.text.y=element_blank(),
           axis.ticks.y=element_blank()) +
     theme(panel.grid.minor = element_line(size = 1), panel.grid.major = element_line(size = 1))
+  
+  frame
 }

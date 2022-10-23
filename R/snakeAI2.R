@@ -2,7 +2,7 @@
 load("NN/nnModel.RData")
 
 #pick a model
-nn <- nnModel[[4]]
+nn <- nnModel[[1]]
 
 #
 library(neuralnet)

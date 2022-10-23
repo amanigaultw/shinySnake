@@ -8,6 +8,7 @@ eat <- function(params){
     params$grow <- T
     params$eaten <- T
     params$score <- params$score + 1
+    params$path <- NULL
   }
   
   return(params)

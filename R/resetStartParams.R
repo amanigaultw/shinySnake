@@ -11,6 +11,7 @@ resetStartParams <- function(params){
   params$score = 0
   params$gameCount <- params$gameCount + 1
   params$frame = 0
+  params$path = NULL
   
   return(params)
 }

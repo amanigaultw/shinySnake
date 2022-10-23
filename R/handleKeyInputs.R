@@ -7,6 +7,11 @@ handleKeyInputs <- function(params, key){
   #toggle autoMode
   if(key == "m"){
     params$autoMode <- !params$autoMode
+    
+    if(params$autoMode == FALSE){
+      params$path <- NULL
+    }
+    
     return(params)
   }
   
