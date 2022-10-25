@@ -1,15 +1,24 @@
 library(shiny)
-library(keys)
-
-hotkeys <- c("a", "w", "s", "d", "left", "up", "down", "right",
-             "m")
-
 
 shinyUI(fluidPage(
   
   #key inputs
-  useKeys(),
-  keysInput("keys", hotkeys),
+  ## keydown
+  tags$script('
+    downKeyCount = 0;
+    $(document).on("keydown", function (e) {
+       Shiny.onInputChange("downKey", downKeyCount++);
+       Shiny.onInputChange("downKeyId", e.code);
+    });'
+  ),
+  ## keyup
+  tags$script('
+    upKeyCount = 0;
+    $(document).on("keyup", function (e) {
+       Shiny.onInputChange("upKey", upKeyCount++);
+       Shiny.onInputChange("upKeyId", e.code);
+    });'
+  ),
   
   #CSS
   tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),

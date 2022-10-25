@@ -19,9 +19,14 @@ shinyServer(function(input, output) {
   params <- setStartParams()
   
   #handle key inputs
-  observeEvent(input$keys, {
-    params <- isolate(handleKeyInputs(params, input$keys))
-  })
+  keyRecords = reactiveValues()
+  observeEvent(input$downKey, { 
+    keyRecords[[input$downKeyId]] = TRUE 
+    keys = reactiveValuesToList(keyRecords)
+    lastKey = names(keys[unlist(keys)])[length(names(keys[unlist(keys)]))]
+    params <- isolate(handleKeyInputs(params, lastKey))
+  });
+  observeEvent(input$upKey, { keyRecords[[input$upKeyId]] = FALSE });
   
   #update game plot at fixed interval
   observe({

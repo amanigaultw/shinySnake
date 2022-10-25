@@ -1,12 +1,12 @@
 keyToDir <- function(key){
   
   dir = switch (key,
-                "a" = "left",
-                "w" = "up",
-                "s" = "down",
-                "d" = "right",
-                "left" = "left",
-                "up" = "up",
-                "down" = "down",
-                "right" = "right") 
+                "KeyA" = "left",
+                "KeyW" = "up",
+                "KeyS" = "down",
+                "KeyD" = "right",
+                "ArrowLeft" = "left",
+                "ArrowUp" = "up",
+                "ArrowDown" = "down",
+                "ArrowRight" = "right") 
 }
