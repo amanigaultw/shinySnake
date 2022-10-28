@@ -33,11 +33,12 @@ updatepath <- function(path, params){
   rowToExplore <- which(path$explored == FALSE)[1]
   adjacentCells <- getAdjacentCells(path[rowToExplore, ])
   path$explored[rowToExplore] <- TRUE
+  check <- rbind(path[, c(1,2)], params$snakePos[-1,c(1,2)])
   
   validVector <- rep(TRUE, 4)
   for(i in 1:nrow(adjacentCells)){
     coords <- adjacentCells[i, ]
-    if(sum(duplicated(rbind(path, coords)[,c("xPos", "yPos")])) > 0){ #first check if the adjacent cell has already been mapped
+    if(sum(duplicated(rbind(check, coords[,c(1,2)]))) > 0){
       validVector[i] <- FALSE
       next
     }
@@ -45,12 +46,8 @@ updatepath <- function(path, params){
       validVector[i] <- FALSE
       next
     }
-    if(sum(duplicated(rbind(params$snakePos[-1,], coords[, c("xPos", "yPos")]))) > 0){
-      validVector[i] <- FALSE
-      next
-    }
   }
-  validCells <- adjacentCells[validVector,] #keep the rows that passed both checks
+  validCells <- adjacentCells[validVector,]
   rbind(path, validCells)
 }
 
