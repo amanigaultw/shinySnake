@@ -45,11 +45,9 @@ updatepath <- function(path, params){
       validVector[i] <- FALSE
       next
     }
-    for(j in 2:nrow(params$snakePos)){ #skip the snake head so that the end point of the path finding algorithm can be found
-      if(params$snakePos$xPos[j] == coords$xPos & params$snakePos$yPos[j] == coords$yPos){
-        validVector[i] <- FALSE
-        break
-      }
+    if(sum(duplicated(rbind(params$snakePos[-1,], coords[, c("xPos", "yPos")]))) > 0){
+      validVector[i] <- FALSE
+      next
     }
   }
   validCells <- adjacentCells[validVector,] #keep the rows that passed both checks
