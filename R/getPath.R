@@ -1,3 +1,5 @@
+library(Rcpp)
+
 getPath <- function(params){
   
   path <- initiatepath(params)
@@ -35,24 +37,13 @@ updatepath <- function(path, params){
   path$explored[rowToExplore] <- TRUE
   check <- rbind(path[, c(1,2)], params$snakePos[-1,c(1,2)])
   
-  validVector <- rep(TRUE, 4)
-  for(i in 1:nrow(adjacentCells)){
-    coords <- adjacentCells[i, ]
-    if(sum(duplicated(rbind(check, coords[,c(1,2)]))) > 0){
-      validVector[i] <- FALSE
-      next
-    }
-    if(coords$xPos < 0 | coords$yPos < 0 | coords$xPos > params$gridSize - 1 | coords$yPos > params$gridSize - 1){
-      validVector[i] <- FALSE
-      next
-    }
-  }
+  validVector <- getValidAdj(as.matrix(adjacentCells[,c(1,2)]), as.matrix(check), params$gridSize)
   validCells <- adjacentCells[validVector,]
   rbind(path, validCells)
 }
 
 pathCompleted <- function(path, params){
-  sum(duplicated(rbind(path[,c("xPos", "yPos")], params$snakePos[1,])[,c("xPos", "yPos")])) > 0
+  sum(duplicated(rbind(path[,c(1,2)], params$snakePos[1,])[,c(1,2)])) > 0
 }
 
 prunePath <- function(path, params){
@@ -89,3 +80,29 @@ isAdjacent <- function(coords1, coords2){
   }
   adjacent
 }
+
+cppFunction('LogicalVector getValidAdj(NumericMatrix adj, NumericMatrix check, int size) {
+  
+  int nrow = adj.nrow();
+  LogicalVector out(nrow);
+  int limit = size - 1;
+  int nrowc = check.nrow(); 
+  
+  for(int i = 0; i < nrow; ++i) {
+    out[i] = true;
+    int x = adj(i,0);
+    int y = adj(i,1);
+    
+    if((x < 0) | (y < 0) | (x > limit) | (y > limit)){
+    out[i] = false;
+    }
+    
+    for(int j = 0; j < nrowc; ++j){
+      if((x == check(j,0)) & (y == check(j,1))){
+        out[i] = false;
+      }
+    }
+  }
+  
+  return out;
+}')
