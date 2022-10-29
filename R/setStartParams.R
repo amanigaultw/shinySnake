@@ -24,7 +24,8 @@ setStartParams <- function(asReactive = TRUE){
                  score = 0,
                  alive = T,
                  
-                 autoMode = T,
+                 autoMode = F,
+                 AI = snakeAI3,
                  
                  path = NULL,
                  pathSize = 4,

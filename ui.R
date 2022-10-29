@@ -1,6 +1,9 @@
 library(shiny)
+library(shinyjs)
 
 shinyUI(fluidPage(
+  
+  useShinyjs(),
   
   #key inputs
   ## keydown
@@ -24,12 +27,28 @@ shinyUI(fluidPage(
   tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
   
   #UI elements
-  column(8, align="center",
-         textOutput("score"),
-         plotOutput("plot1",
-                    width = "500px",
-                    height = "500px"),
-         htmlOutput("Instructions")
-  )
-  
+  titlePanel("Shiny Snake: Experimenting with Snake AIs"),
+  htmlOutput("bannerQuote"),
+  htmlOutput("descriptionManualMode"),
+  hr(),
+  sidebarLayout(
+    sidebarPanel(h3("Pick a mode:"),
+                 actionButton("actionMode", "Let an AI play the game"),
+                 hr(),
+                 htmlOutput("instructionsManual"),
+                 radioButtons("radioAI", h3("Choose an AI:"),
+                              choices = list("AI 1 (heuristic)" = 1, 
+                                             "AI 2 (random)" = 2,
+                                             "AI 3 (a bad Neural Network)" = 3,
+                                             "AI 4 (pathing)" = 4),
+                              selected = 1)),
+    mainPanel(
+      column(12, align="center",
+             textOutput("score"),
+             plotOutput("plot1",
+                        width = "500px",
+                        height = "500px")
+             )
+    )),
+  hr()
 ))

@@ -4,17 +4,6 @@ handleKeyInputs <- function(params, key){
     return(params)
   }
   
-  #toggle autoMode
-  if(key == "KeyM"){
-    params$autoMode <- !params$autoMode
-    
-    if(params$autoMode == FALSE){
-      params$path <- NULL
-    }
-    
-    return(params)
-  }
-  
   #handle direction input
   moveKeys <- c("KeyA", "KeyW", "KeyS", "KeyD", "ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight")
   if(params$autoMode == F & key %in% moveKeys){

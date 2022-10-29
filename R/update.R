@@ -3,7 +3,7 @@ update <- function(params, AI){
   params$frame <- params$frame + 1
   
   if(params$autoMode){
-    params <- AI(params)
+    params <- params$AI(params)
   }
   
   params <- die(params)
