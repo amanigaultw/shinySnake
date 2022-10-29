@@ -4,7 +4,7 @@ descriptionsList <- list("1" = "
                          This AI is based on a simply heuristic rule. 
                          Each turn the player must choose between moving forward, turning left, or turning right. 
                          This AI always picks whichever direction makes the snake move closer to the target (ties are broken at random).
-                         This works pretty well initially, but lacks to the foresight to anticipate deadends.",
+                         This works well initially, but lacks the foresight to anticipate deadends.",
                          "2" = "
                          <b>Description:</b>
                          <br>

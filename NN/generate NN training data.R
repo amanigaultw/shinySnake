@@ -12,12 +12,13 @@ if(file.exists("NN/frameData raw.RData")){
 }else{
   #
   params <- setStartParams(asReactive = F)
+  params$autoMode <- T
   
   #
   startTime <- Sys.time()
   frames_list <- list()
   i <- 1
-  while(params$gameCount < 1000){
+  while(params$gameCount < 100){
     params <- update(params)
     frames_list[[i]] <- params
     names(frames_list)[i] <- paste0("game", params$gameCount, "-score", params$score, "-frame", params$frame)
@@ -61,7 +62,7 @@ for(i in 1:(length(frames_list_success) - 1)){
   data[i,] <- c(frames_list_success[[i + 1]]$moveDir, paramsToInputs(frames_list_success[[i]]))
 }
 
-colnames(data) <- c("nextMoveDir", paste0("pos", 1:121))
+colnames(data) <- c("nextMoveDir", paste0("pos", 1:(params$gridSize^2)))
 
 save(data, file = "NN/NN_data.RData")
 

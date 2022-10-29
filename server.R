@@ -30,7 +30,7 @@ shinyServer(function(input, output, session) {
   
   #update game plot at fixed interval
   observe({
-    invalidateLater(200)
+    invalidateLater(300)
     output$plot1 <- renderPlot({
       plotFrame(isolate(update(params, AI)))
     })

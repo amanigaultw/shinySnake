@@ -1,6 +1,6 @@
 setStartParams <- function(asReactive = TRUE){
   
-  params <- list(gridSize = 11,
+  params <- list(gridSize = 10,
                  
                  snakePos = data.frame(xPos = c(3, 3),
                                        yPos = c(3, 2)),
