@@ -42,7 +42,7 @@ shinyUI(fluidPage(
                                              "AI 2 (random)" = 2,
                                              "AI 3 (a bad Neural Network)" = 3,
                                              "AI 4 (pathing)" = 4),
-                              selected = 4)),
+                              selected = 1)),
     mainPanel(
       column(12, align="center",
              textOutput("score"),
@@ -51,5 +51,6 @@ shinyUI(fluidPage(
                         height = "500px")
              )
     )),
-  hr()
+  hr(),
+  htmlOutput("descriptionAIMode")
 ))

@@ -30,7 +30,7 @@ shinyServer(function(input, output, session) {
   
   #update game plot at fixed interval
   observe({
-    invalidateLater(400)
+    invalidateLater(200)
     output$plot1 <- renderPlot({
       plotFrame(isolate(update(params, AI)))
     })
@@ -43,12 +43,14 @@ shinyServer(function(input, output, session) {
   output$instructionsManual <- renderUI({HTML("Controls: WASD/arrow keys")})
   output$bannerQuote <- renderUI({HTML("<i>“A neural network is the second best way to solve any problem. The best way is to actually understand the problem.”</i> - Unknown")})
   output$descriptionManualMode <- renderUI({HTML("<br>Before trying out different AIs, take a moment to familiarize yourself with the problem at hand; play the game using WASD or arrow keys.  This is especially important if you are not familiar with this game.")})
+  output$descriptionAIMode <- renderUI({HTML(descriptionsList[[input$radioAI]])})
   
   #toggle
   observe({ 
     toggle(id="radioAI", condition = params$autoMode == T)
     toggle(id="instructionsManual", condition = params$autoMode == F)
     toggle(id="descriptionManualMode", condition = params$autoMode == F)
+    toggle(id="descriptionAIMode", condition = params$autoMode == T)
   })
   
   #handle toggling the app mode
