@@ -61,7 +61,6 @@ shinyServer(function(input, output, session) {
       txt <- "Let an AI play the game"
     }
     updateActionButton(session, "actionMode", label = txt)
-    
     })
   
   observeEvent(input$radioAI, {
