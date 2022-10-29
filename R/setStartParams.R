@@ -2,14 +2,14 @@ setStartParams <- function(asReactive = TRUE){
   
   params <- list(gridSize = 11,
                  
-                 snakePos = data.frame(xPos = c(8, 8),
-                                       yPos = c(8, 7)),
+                 snakePos = data.frame(xPos = c(3, 3),
+                                       yPos = c(3, 2)),
                  snakeSize = 24,
                  snakeColor = "chartreuse3",
                  snakeHeadColor = "chartreuse4",
                  
-                 foodPos = data.frame(xPos = 3,
-                                      yPos = 3) ,
+                 foodPos = data.frame(xPos = 8,
+                                      yPos = 8) ,
                  foodSize = 10,
                  foodColor = "brown",
                  
