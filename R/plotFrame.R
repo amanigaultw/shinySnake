@@ -1,5 +1,6 @@
 plotFrame <- function(params){
   require(ggplot2)
+  require(quickPlot)
   
   frame <- ggplot()
   
@@ -22,7 +23,8 @@ plotFrame <- function(params){
           axis.title.y=element_blank(),
           axis.text.y=element_blank(),
           axis.ticks.y=element_blank()) +
-    theme(panel.grid.minor = element_line(size = 1), panel.grid.major = element_line(size = 1))
+    theme(panel.grid.minor = element_line(size = 1), 
+          panel.grid.major = element_line(size = 1))
   
-  frame
+  return(quickPlot::Plot(frame, title = F, speedup = 100))
 }
