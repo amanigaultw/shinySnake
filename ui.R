@@ -30,7 +30,8 @@ shinyUI(fluidPage(
   htmlOutput("descriptionManualMode"),
   hr(),
   sidebarLayout(
-    sidebarPanel(h3("Pick a mode:"),
+    sidebarPanel(echarts4rOutput("plot"),
+                 h3("Pick a mode:"),
                  actionButton("actionMode", "Play the game yourself"),
                  hr(),
                  htmlOutput("instructionsManual"),
@@ -39,15 +40,17 @@ shinyUI(fluidPage(
                                              "AI 2 (random)" = 2,
                                              "AI 3 (a bad Neural Network)" = 3,
                                              "AI 4 (pathing)" = 4),
-                              selected = 4)),
+                              selected = 4), 
+                 ),
     mainPanel(
-      column(12, align="center",
+      column(8, align="center",
              textOutput("score"),
              HTML('<canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">
                   Sorry, your browser does not support canvas.
-                  </canvas>'),
+                  </canvas>')
              )
-    )),
+    ),
+    fluid = F),
   hr(),
   htmlOutput("descriptionAIMode")
 ))

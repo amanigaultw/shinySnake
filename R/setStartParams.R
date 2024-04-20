@@ -4,14 +4,14 @@ setStartParams <- function(asReactive = TRUE){
                  
                  snakePos = data.frame(xPos = c(3, 3),
                                        yPos = c(3, 2)),
-                 snakeSize = 24,
-                 snakeColor = "chartreuse3",
-                 snakeHeadColor = "chartreuse4",
+                 #snakeSize = 24,
+                 #snakeColor = "chartreuse3",
+                 #snakeHeadColor = "chartreuse4",
                  
                  foodPos = data.frame(xPos = 8,
                                       yPos = 8) ,
-                 foodSize = 10,
-                 foodColor = "brown",
+                 #foodSize = 10,
+                 #foodColor = "brown",
                  
                  moveDir = "up",
                  moveDirOld = "up",
@@ -22,14 +22,19 @@ setStartParams <- function(asReactive = TRUE){
                  gameCount = 0,
                  frame = 0,
                  score = 0,
+                 lastScore = 0,
                  alive = T,
                  
                  autoMode = T,
                  AI = snakeAI3,
+                 radioAI = "4",
                  
                  path = NULL,
-                 pathSize = 4,
-                 pathColor = "pink")
+                 #pathSize = 4,
+                 #pathColor = "pink",
+                 
+                 fitness = fitness
+                 )
   
   if(asReactive){
     params <- do.call("reactiveValues", params)

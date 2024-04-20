@@ -13,6 +13,7 @@ update <- function(params, AI){
     params <- move(params)
     params <- spawnFood(params) 
   }else{
+    params <- saveFitness(params)
     params <- resetStartParams(params)
   }
   

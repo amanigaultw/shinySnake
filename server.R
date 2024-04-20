@@ -53,6 +53,7 @@ shinyServer(function(input, output, session) {
 
   #swap out AI functions
   observeEvent(input$radioAI, {
+    params$radioAI <- input$radioAI
     params$AI <- isolate(switch(input$radioAI,
                                 "1" = snakeAI0,
                                 "2" = snakeAI1,
@@ -62,6 +63,28 @@ shinyServer(function(input, output, session) {
     params$path <- isolate(NULL)
   })
 
-  #
+  #plot previous scores
+  output$plot <- renderEcharts4r({
+    dfs <- lapply(seq_along(params$fitness), function(i) {
+      scores <- params$fitness[[i]]
+      breaks <- seq(0, 50, by = 5)
+      bins <- cut(scores, breaks = breaks)
+      levels(bins)[length(levels(bins))] <- "(45, Inf]"
+      tmp <- table(bins)
+      data.frame(Score = names(tmp), Frequency = as.numeric(tmp), Player = names(params$fitness)[i])
+    })
+    
+    plot_df <- Reduce(rbind, dfs)
+    
+    plot_df |> 
+      group_by(Player) |> 
+      e_charts(Score) |> 
+      e_bar(Frequency) |> 
+      e_tooltip(trigger = "axis") |>
+      e_legend(padding = 20) |>
+      e_axis_labels(x = "Scores", y = "Freq.") |>
+      e_title("Score Frequency Chart", left = "center", top = "bottom", padding = 20) |> 
+      e_flip_coords()
+  })
 
 })

@@ -8,7 +8,7 @@ descriptionsList <- list("1" = "
                          "2" = "
                          <b>Description:</b>
                          <br>
-                         This AI moves at random.",
+                         This AI moves (almost) at random. It does avoid running into walls.",
                          "3" = "
                          <b>Description:</b>
                          <br>
