@@ -1,5 +1,3 @@
-library(Rcpp)
-
 getPath <- function(params){
   
   path <- initiatepath(params)

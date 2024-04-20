@@ -1,9 +1,3 @@
-library(shiny)
-
-#load helper functions
-fileSources = paste0("R/", list.files(path = "R/", pattern = "*.R"))
-sapply(fileSources, source, .GlobalEnv)
-
 shinyServer(function(input, output, session) {
 
   #start
@@ -21,10 +15,11 @@ shinyServer(function(input, output, session) {
 
   #update game plot at fixed interval
   observe({
-    invalidateLater(300)
-    output$plot1 <- renderPlot({
-      plotFrame(isolate(update(params, AI)))
-    })
+    invalidateLater(game_speed)
+    # output$plot1 <- renderPlot({
+    #   plotFrame(isolate(update(params, AI)))
+    # })
+    js$plotFrame(isolate(reactiveValuesToList(update(params, AI))))
   })
 
   #update score UI
@@ -48,7 +43,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$actionMode, {
     params <- toggleAutoMode(params)
 
-    if (input$actionMode %% 2 == 1) {
+    if (input$actionMode %% 2 == 0) {
       txt <- "Play the game yourself"
     } else {
       txt <- "Let an AI play the game"

@@ -1,10 +1,7 @@
-library(shiny)
-library(shinyjs)
-library(shinythemes)
-
 shinyUI(fluidPage(
   theme = shinytheme("spacelab"),
   useShinyjs(),
+  extendShinyjs(text = plotFrame(), functions = c("plotFrame")),
   
   #key inputs
   ## keydown
@@ -34,7 +31,7 @@ shinyUI(fluidPage(
   hr(),
   sidebarLayout(
     sidebarPanel(h3("Pick a mode:"),
-                 actionButton("actionMode", "Let an AI play the game"),
+                 actionButton("actionMode", "Play the game yourself"),
                  hr(),
                  htmlOutput("instructionsManual"),
                  radioButtons("radioAI", h3("Choose an AI:"),
@@ -42,13 +39,13 @@ shinyUI(fluidPage(
                                              "AI 2 (random)" = 2,
                                              "AI 3 (a bad Neural Network)" = 3,
                                              "AI 4 (pathing)" = 4),
-                              selected = 1)),
+                              selected = 4)),
     mainPanel(
       column(12, align="center",
              textOutput("score"),
-             plotOutput("plot1",
-                        width = "500px",
-                        height = "500px")
+             HTML('<canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">
+                  Sorry, your browser does not support canvas.
+                  </canvas>'),
              )
     )),
   hr(),

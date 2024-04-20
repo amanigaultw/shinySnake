@@ -1,10 +1,5 @@
-#load trained nn models
-load("NN/nn1.RData")
-
-#
-library(neuralnet)
-
 snakeAI2 <- function(params){
+  require(neuralnet)
 
   possibleMoves <- c("left", "up", "down", "right")
   opposite <- switch(params$moveDirOld,
