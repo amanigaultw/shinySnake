@@ -41,16 +41,17 @@ shinyUI(fluidPage(
                                              "AI 3 (a bad Neural Network)" = 3,
                                              "AI 4 (pathing)" = 4),
                               selected = 4), 
-                 ),
+                 width = 5),
     mainPanel(
-      column(8, align="center",
+      column(12, align="center",
              textOutput("score"),
-             HTML('<canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">
-                  Sorry, your browser does not support canvas.
-                  </canvas>')
-             )
-    ),
-    fluid = F),
+             HTML('<div id="canvas-container">
+                      <canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">
+                      Sorry, your browser does not support canvas.
+                      </canvas>
+                  </div>')
+             ),
+      width = 7)),
   hr(),
   htmlOutput("descriptionAIMode")
 ))

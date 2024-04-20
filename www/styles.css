@@ -1,4 +1,13 @@
 #score{color: black;
 font-size: 30px;
 font-weight: bold;
-};
+}
+
+#canvas-container {
+   width: 100%;
+   text-align:center;
+}
+
+canvas {
+   display: inline;
+}
