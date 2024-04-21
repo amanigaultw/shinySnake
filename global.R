@@ -17,12 +17,10 @@ game_speed = 100
 load("NN/nn1.RData")
 
 #load fitness
-load("data/fitness.RData") |> load_persistent_data()
+load("data/fitness.RData")
 
 #load snake.js file as a string for extendShinyjs() to consume
 load("data/snakeJS.RData")
 
-#uploading persistent data to Dropbox
-onStop(function() {
-  drop_upload("data/human_scores_persistent.csv")
-})
+#load descriptions
+load("data/descriptionsList.RData")

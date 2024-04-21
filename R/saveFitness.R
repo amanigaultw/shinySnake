@@ -4,7 +4,6 @@ saveFitness <- function(params){
   
   if(params$autoMode == F){
     params$fitness$`human` <- c(params$fitness$`human`, params$score)
-    write.csv(params$fitness$`human`, file = "data/human_scores_persistent.csv", row.names = F)
   }else{
     switch(params$radioAI,
            "1" = {params$fitness$`AI 1` <- c(params$fitness$`AI 1`, params$score)},
