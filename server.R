@@ -1,8 +1,9 @@
 shinyServer(function(input, output, session) {
 
-  #start
+  #reactiveValues
   params <- setStartParams()
   keyRecords <- reactiveValues()
+  rv <- reactiveValues(game_speed = 100)
 
   #handle key inputs
   observeEvent(input$downKey, {
@@ -13,10 +14,12 @@ shinyServer(function(input, output, session) {
   })
   observeEvent(input$upKey, { keyRecords[[input$upKeyId]] = FALSE })
 
+  observeEvent(input$speed_slider, {
+    rv$game_speed <- 1000 / as.numeric(input$speed_slider)
+  })
   #update game plot at fixed interval
   observe({
-    game_speed <- 1000 / input$speed_slider
-    invalidateLater(game_speed)
+    invalidateLater(isolate(rv$game_speed))
     js$plotFrame(isolate(reactiveValuesToList(update(params, AI))))
   })
 

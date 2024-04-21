@@ -2,27 +2,9 @@ shinyUI(fluidPage(
   theme = shinytheme("spacelab"),
   useShinyjs(),
   extendShinyjs(text = snakeJS, functions = c("plotFrame")),
-  
-  #key inputs
-  ## keydown
-  tags$script('
-    downKeyCount = 0;
-    $(document).on("keydown", function (e) {
-       Shiny.onInputChange("downKey", downKeyCount++);
-       Shiny.onInputChange("downKeyId", e.code);
-    });'
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
+            tags$script(src="script.js")
   ),
-  ## keyup
-  tags$script('
-    upKeyCount = 0;
-    $(document).on("keyup", function (e) {
-       Shiny.onInputChange("upKey", upKeyCount++);
-       Shiny.onInputChange("upKeyId", e.code);
-    });'
-  ),
-  
-  #CSS
-  tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
   
   #UI elements
   titlePanel("Shiny Snake: Experimenting with Snake AIs"),
@@ -45,10 +27,8 @@ shinyUI(fluidPage(
     mainPanel(
       column(12, align="center",
              textOutput("score"),
-             div(id = "canvas-container",
-                 HTML('<canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">Sorry, your browser does not support canvas.</canvas>')
-             ),
-             sliderInput("speed_slider", "Set Game Speed (frames per second)", min = 1, max = 60, value = 30),
+             custom_canvas(id = "snakeCanvas", width="500", height="500", style="border:5px solid rgb(0, 0, 0);"),
+             custom_slider(id = "FPSRange", min = 1, max = 30, value = 15, text = "Frames Per Second")
       ),
       width = 7)),
   hr(),
