@@ -3,3 +3,4 @@
 rsconnect/
 .httr-oauth
 auth/
+data/human_scores_persistent.csv
