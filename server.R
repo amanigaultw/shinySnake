@@ -84,7 +84,8 @@ shinyServer(function(input, output, session) {
       e_legend(padding = 20) |>
       e_axis_labels(x = "Scores", y = "Freq.") |>
       e_title("Score Frequency Chart", left = "center", top = "bottom", padding = 20) |> 
-      e_flip_coords()
+      e_flip_coords() |>
+      e_grid(left = 70, right = 50, top = 100)
   })
 
 })
