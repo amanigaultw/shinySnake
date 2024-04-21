@@ -4,7 +4,7 @@ library(shinythemes)
 library(neuralnet)
 library(Rcpp)
 library(echarts4r)
-
+library(rdrop2)
 
 #load helper functions
 fileSources = paste0("R/", list.files(path = "R/", pattern = "*.R"))
@@ -17,14 +17,12 @@ game_speed = 100
 load("NN/nn1.RData")
 
 #load fitness
-load("data/fitness.RData")
+load("data/fitness.RData") |> load_persistent_data()
 
 #load snake.js file as a string for extendShinyjs() to consume
 load("data/snakeJS.RData")
 
-#load persistent human score data
-fitness <- load_persistent_data(fitness)
-
+#uploading persistent data to Dropbox
 onStop(function() {
-    cat("Doing application cleanup\n")
-  })
+  drop_upload("data/human_scores_persistent.csv")
+})
