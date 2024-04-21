@@ -1,7 +1,7 @@
 shinyUI(fluidPage(
   theme = shinytheme("spacelab"),
   useShinyjs(),
-  extendShinyjs(text = plotFrame(), functions = c("plotFrame")),
+  extendShinyjs(text = snakeJS, functions = c("plotFrame")),
   
   #key inputs
   ## keydown
@@ -45,12 +45,10 @@ shinyUI(fluidPage(
     mainPanel(
       column(12, align="center",
              textOutput("score"),
-             HTML('<div id="canvas-container">
-                      <canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">
-                      Sorry, your browser does not support canvas.
-                      </canvas>
-                  </div>')
-             ),
+             div(id = "canvas-container",
+                 HTML('<canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">Sorry, your browser does not support canvas.</canvas>')
+             )
+      ),
       width = 7)),
   hr(),
   htmlOutput("descriptionAIMode")

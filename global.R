@@ -18,4 +18,5 @@ game_speed = 100
 
 #load fitness
 load("data/fitness.RData")
+load("data/snakeJS.RData")
 
