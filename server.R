@@ -15,10 +15,8 @@ shinyServer(function(input, output, session) {
 
   #update game plot at fixed interval
   observe({
+    game_speed <- 1000 / input$speed_slider
     invalidateLater(game_speed)
-    # output$plot1 <- renderPlot({
-    #   plotFrame(isolate(update(params, AI)))
-    # })
     js$plotFrame(isolate(reactiveValuesToList(update(params, AI))))
   })
 

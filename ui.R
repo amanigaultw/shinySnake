@@ -47,7 +47,8 @@ shinyUI(fluidPage(
              textOutput("score"),
              div(id = "canvas-container",
                  HTML('<canvas id="snakeCanvas" width="500" height="500" style="border:5px solid rgb(0, 0, 0);">Sorry, your browser does not support canvas.</canvas>')
-             )
+             ),
+             sliderInput("speed_slider", "Set Game Speed (frames per second)", min = 1, max = 60, value = 30),
       ),
       width = 7)),
   hr(),

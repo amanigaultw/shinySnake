@@ -10,9 +10,6 @@ library(rdrop2)
 fileSources = paste0("R/", list.files(path = "R/", pattern = "*.R"))
 sapply(fileSources, source, .GlobalEnv)
 
-#set game speed
-game_speed = 100
-
 #load trained nn models
 load("NN/nn1.RData")
 
